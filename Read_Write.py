@@ -94,22 +94,25 @@ while menu != "END":
 
     while menu1 != "ENDING":
         print(f"\n{Useful_Tools.Color.bold}{Useful_Tools.Color.red}DO NOT include PERIODS in name of this file."
-              f"\nAny PERIODS will be removed, meaning you do not have to worry about adding the extension.{Useful_Tools.Color.end}"
+              f"\nAny PERIODS will be removed, meaning you do not have to worry about adding the extension."
+              f"The '.txt will be added automatically{Useful_Tools.Color.end}"
               "\nAny SPACES you add will be replaced with '_'")
         # sleep(4)
 
         if menu1 == 1:
-            read = input("\n\nWhat would you like to name this file?"
-                         "\n>>>").replace(".", "").replace(" ", "_")
-            reading = open(f"{read}.txt", 'w')
-            print(f"\nAlright, the file with the name '{read}.txt' has been created.")
+            reads = input("\n\nWhat would you like to name this file?"
+                          "\n>>>").replace(".", "").replace(" ", "_")
+            read = reads + ".txt"
+            reading = open(f"{read}", 'w')
+            print(f"\nAlright, the file with the name '{read}' has been created.")
 
         elif menu1 == 2:
             while menu1 != "END":
-                read = input("\n\nWhat is the name of the file you wish to ACCESS?"
-                             "\n>>>").replace(".", "").replace(" ", "_")
+                reads = input("\n\nWhat is the name of the file you wish to ACCESS?"
+                              "\n>>>").replace(".", "").replace(" ", "_")
+                read = reads + ".txt"
                 try:
-                    reading = open(f"{read}.txt", "r")
+                    reading = open(f"{read}", "r")
                     menu1 = "ENDING"
                     break
                 except FileNotFoundError:
@@ -134,8 +137,8 @@ while menu != "END":
                         print("Okay.")
 
                     elif menu1 == 2:
-                        reading = open(f"{read}.txt", 'w')
-                        print(f"Alright, the file '{read}.txt' has been created")
+                        reading = open(f"{read}", 'w')
+                        print(f"Alright, the file '{read}' has been created")
                         break
 
         while menu1 != "END":
@@ -144,7 +147,8 @@ while menu != "END":
                           "\n1. READ File"
                           "\n2. APPEND File"
                           "\n3. OVERWRITE File"
-                          "\n4. EXIT Menu")
+                          "\n4. EXIT Menu"
+                          "\n>>>")
             while menu2 != int:
                 try:
                     menu2 = int(menu2)
@@ -163,8 +167,9 @@ while menu != "END":
                 break
 
             if menu2 == 1:
-                print(f"\nHere are the contents of the {read}.txt file:"
-                      f"\n{reading.read}")
+                reading = open(read, "r")
+                print(f"\nHere are the contents of the {read} file:\n"
+                      f"\n{reading.read()}")
 
             if menu2 == 2:
                 append = input("\nWhat would you like to add to the file? (ONE LINE AT A TIME UNFORTUNATELY)"
@@ -174,7 +179,9 @@ while menu != "END":
                 reading.close()
 
             if menu2 == 3:
-                sure = input(f"\n{Useful_Tools.Color.bold}Are you sure you want to OVERWRITE the text in this file? (Y or N){Useful_Tools.Color.end}"
+                sure = input(f"{Useful_Tools.Color.bold}"
+                             "\nAre you sure you want to OVERWRITE the text in this file? (Y or N)"
+                             f"{Useful_Tools.Color.end}"
                              "\n>>>").title()
 
                 if sure == "Y":
