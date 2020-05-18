@@ -4,7 +4,13 @@
 from time import sleep
 import Useful_Tools
 
-input("PRESS ENTER")
+
+def boldening(bold):
+    bolding = f"{Useful_Tools.Color.bold}{bold}{Useful_Tools.Color.end}"
+    return bolding
+
+
+input(f"{boldening('PRESS ENTER')}")
 
 name = input("\nWhy hello there user, what is your name?"
              "\n>>>").title()
@@ -13,9 +19,9 @@ sleep(.5)
 print(f"\nWelcome {name}."
       f"\nToday we are going to be checking out a new program."
       f"\nYou will be able to..."
-      f"\nWait.")
+      f"\n{boldening('Wait.')}")
 
-#sleep(2)
+sleep(2)
 input("\nI.. I don't have anything scheduled for today."
       "\nWhat happened to the assignments?"
       "\nThere.. There's no script.."
@@ -30,34 +36,34 @@ print("\nI see."
 dots = "..."
 num = 0
 while num < 4:
-    #sleep(.5)
+    sleep(.5)
     print(dots[0:num])
     num += 1
 num = 2
 while num > 0:
-    #sleep(.5)
+    sleep(.5)
     print(dots[0:num])
     num -= 1
-#sleep(.5)
+sleep(.5)
 
 print("\nYou know what?"
       "\nI'll just make a new program!"
       "\nIt'll be about.."
       "\nUhh, Reading and Writing.."
       "\nYeah, Reading and Writing to a file")
-# sleep(5)
+sleep(4)
 
 print("\nThere won't be much to variation in this program, "
       "but you'll have freedom to do whatever"
       "\nI will have a menu that will allow any user to:"
-      "\nCREATE a text file"
-      "\nACCESS an existing text file"
-      "\nREAD the contents of that text file"
-      "\nAPPEND (ADD) new context to the end of that text file"
-      "\nOVERWRITE the contents of that text file")
+      f"\n{boldening('CREATE')} a text file"
+      f"\n{boldening('ACCESS')} an existing text file"
+      f"\n{boldening('READ')} the contents of that text file"
+      f"\n{boldening('APPEND (ADD)')} new context to the end of that text file"
+      f"\n{boldening('OVERWRITE')} the contents of that text file")
 
 
-input("\n\n*PRESS ENTER IF YOU UNDERSTAND*")
+input(f"\n\n*{boldening('PRESS ENTER IF YOU UNDERSTAND')}*")
 
 print("\nAlright! This should be fun."
       "\nOui, something fun you can do is make Journal Entries")
@@ -71,9 +77,9 @@ while menu != "END":
     print(""
           "_" * 50)
     menu1 = input("\n*TYPE THE NUMBER OF YOUR DESIRED CHOICE*"
-                  "\n1. CREATE text file"
-                  "\n2. ACCESS existing text file"
-                  "\n3. EXIT THIS PROGRAM"
+                  f"\n1. {boldening('CREATE')} text file"
+                  f"\n2. {boldening('ACCESS')} existing text file"
+                  f"\n3. {boldening('EXIT')} THIS PROGRAM"
                   "\n>>>")
     while menu1 != int:
         try:
@@ -83,9 +89,9 @@ while menu != "END":
             else:
                 int("#Force Fail")
         except ValueError:
-            menu1 = input("\nEnter 1 to CREATE"
-                          "\nEnter 2 to ACCESS"
-                          "\nENTER 3 to EXIT"
+            menu1 = input(f"\nEnter 1 to {boldening('CREATE')}"
+                          f"\nEnter 2 to {boldening('ACCESS')}"
+                          f"\nENTER 3 to {boldening('EXIT')}"
                           "\n>>>")
 
     if menu1 == 3:
@@ -95,9 +101,9 @@ while menu != "END":
     while menu1 != "ENDING":
         print(f"\n{Useful_Tools.Color.bold}{Useful_Tools.Color.red}DO NOT include PERIODS in name of this file."
               f"\nAny PERIODS will be removed, meaning you do not have to worry about adding the extension."
-              f"The '.txt will be added automatically{Useful_Tools.Color.end}"
+              f"\nThe '.txt will be added automatically{Useful_Tools.Color.end}"
               "\nAny SPACES you add will be replaced with '_'")
-        # sleep(4)
+        sleep(4)
 
         if menu1 == 1:
             reads = input("\n\nWhat would you like to name this file?"
@@ -108,7 +114,7 @@ while menu != "END":
 
         elif menu1 == 2:
             while menu1 != "END":
-                reads = input("\n\nWhat is the name of the file you wish to ACCESS?"
+                reads = input(f"\n\nWhat is the name of the file you wish to {boldening('ACCESS?')}"
                               "\n>>>").replace(".", "").replace(" ", "_")
                 read = reads + ".txt"
                 try:
@@ -118,8 +124,8 @@ while menu != "END":
                 except FileNotFoundError:
                     do = input("\nThis file name seems to be non existent."
                                "\nWould you like to:"
-                               "\n1. Try AGAIN"
-                               "\n2. CREATE this file"
+                               f"\n1. Try {boldening('AGAIN')}"
+                               f"\n2. {boldening('CREATE')} this file"
                                "\n>>>")
                     while menu1 != "END":
                         try:
@@ -129,8 +135,8 @@ while menu != "END":
                             else:
                                 int("#Force Fail")
                         except ValueError:
-                            menu1 = input("\nEnter 1 to try AGAIN"
-                                          "\nEnter 2 to CREATE this file"
+                            menu1 = input(f"\nEnter 1 to try {boldening('AGAIN')}"
+                                          f"\nEnter 2 to {boldening('CREATE')} this file"
                                           "\n>>>")
 
                     if menu1 == 1:
@@ -144,10 +150,10 @@ while menu != "END":
         while menu1 != "END":
             reading.close()
             menu2 = input("\n*TYPE THE NUMBER OF YOUR DESIRED CHOICE*"
-                          "\n1. READ File"
-                          "\n2. APPEND File"
-                          "\n3. OVERWRITE File"
-                          "\n4. EXIT Menu"
+                          f"\n1. {boldening('READ')} File"
+                          f"\n2. {boldening('APPEND')} File"
+                          f"\n3. {boldening('OVERWRITE')} File"
+                          f"\n4. {boldening('EXIT')} Menu"
                           "\n>>>")
             while menu2 != int:
                 try:
@@ -157,10 +163,10 @@ while menu != "END":
                     else:
                         int("#Force Fail")
                 except ValueError:
-                    menu2 = input("\nEnter 1 to READ"
-                                  "\nEnter 2 to APPEND"
-                                  "\nENTER 3 to OVERWRITE"
-                                  "\nENTER 4 to EXIT"
+                    menu2 = input(f"\nEnter 1 to {boldening('READ')}"
+                                  f"\nEnter 2 to {boldening('APPEND')}"
+                                  f"\nENTER 3 to {boldening('OVERWRITE')}"
+                                  f"\nENTER 4 to {boldening('EXIT')}"
                                   "\n>>>")
 
             if menu2 == 4:
@@ -172,20 +178,17 @@ while menu != "END":
                       f"\n{reading.read()}")
 
             if menu2 == 2:
-                append = input("\nWhat would you like to add to the file? (ONE LINE AT A TIME UNFORTUNATELY)"
+                append = input(f"\nWhat would you like to add to the file? {boldening('(ONE LINE AT A TIME UNFORTUNATELY)')}"
                                "\n>>>")
                 reading = open(f"{read}", "a")
                 reading.write(append + "\n")
-                reading.close()
 
             if menu2 == 3:
-                sure = input(f"{Useful_Tools.Color.bold}"
-                             "\nAre you sure you want to OVERWRITE the text in this file? (Y or N)"
-                             f"{Useful_Tools.Color.end}"
+                sure = input(f"\n{Useful_Tools.Color.red}{boldening('Are you sure you want to OVERWRITE the text in this file? (Y or N)')}"
                              "\n>>>").title()
 
                 if sure == "Y":
-                    write = input("\nWhat would you like to add to this file? (ONE LINE AT A TIME UNFORTUNATELY)"
+                    write = input(f"\nNow, what would you like to add to this file? {boldening('(ONE LINE AT A TIME UNFORTUNATELY)')}"
                                   "\n>>>")
                     reading = open(f"{read}", "w")
                     reading.write(write + "\n")
