@@ -74,9 +74,9 @@ try:
     holder = open("File_Holder.txt", "r")
 except FileNotFoundError:
     holder = open("File_Holder.txt", "w")
-    holder.write("# THIS FILE HOLDS ALL OF THE FILES CREATED BY A USER #"
-                 "\nTHESE ARE ALL OF THE FILES THAT CURRENTLY EXIST:"
-                 "\n")
+    holder.write("# THIS FILE HOLDS THE NAMES OF ALL THE FILES CREATED BY A USER #"
+                 "\nTHESE ARE ALL OF THE FILE NAMES THAT CURRENTLY EXIST:"
+                 "\n\n")
 finally:
     holder.close()
 
@@ -113,7 +113,7 @@ while menu != "END":
 
         first_line = True
         holder = open("File_Holder.txt", "r")
-        print("\n" + boldening(holder.read()[63:]))
+        print("\n" + boldening(holder.read()[65:]))
         holder.close()
 
         input(boldening("PRESS ENTER"))
