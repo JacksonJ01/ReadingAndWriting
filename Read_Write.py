@@ -76,7 +76,7 @@ except FileNotFoundError:
     holder = open("File_Holder.txt", "w")
     holder.write("# THIS FILE HOLDS THE NAMES OF ALL THE FILES CREATED BY A USER #"
                  "\nTHESE ARE ALL OF THE FILE NAMES THAT CURRENTLY EXIST:"
-                 "\n\n")
+                 "\n")
 finally:
     holder.close()
 
