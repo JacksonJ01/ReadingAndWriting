@@ -3,6 +3,7 @@
 # In this program I will play around with the reading, writing, and appending of files
 from time import sleep
 import Useful_Tools
+import re
 
 
 def boldening(bold):
@@ -112,7 +113,7 @@ while menu != "END":
 
         first_line = True
         holder = open("File_Holder.txt", "r")
-        print("\n" + boldening(holder.read()[55:]))
+        print("\n" + boldening(holder.read()[63:]))
         holder.close()
 
         input(boldening("PRESS ENTER"))
@@ -127,8 +128,16 @@ while menu != "END":
             reads = input("\n\nWhat would you like to name this file?"
                           "\n>>>").replace(".", "").replace(" ", "_")
             read = reads + ".txt"
-            reading = open(f"{read}", 'w')
-            print(f"\nAlright, the file with the name '{read}' has been created.")
+            holder = open("File_Holder.txt")
+            if re.search(fr'{read}', holder.read()):
+                print("\nIt looks like there is a file with this name already."
+                      "\nI will now take you back to the main menu"
+                      "\nCheck your " + boldening("Spelling"))
+                break
+
+            else:
+                reading = open(f"{read}", 'w')
+                print(f"\nAlright, the file with the name '{read}' has been created.")
 
         elif menu1 == 2:
             while menu1 != "END":
