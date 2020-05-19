@@ -68,12 +68,22 @@ input(f"\n\n*{boldening('PRESS ENTER IF YOU UNDERSTAND')}*")
 print("\nAlright! This should be fun."
       "\nOui, something fun you can do is make Journal Entries")
 
+holder = 0
+try:
+    holder = open("File_Holder.txt", "r")
+except FileNotFoundError:
+    holder = open("File_Holder.txt", "w")
+    holder.write("# THIS FILE HOLDS ALL OF THE FILES CREATED BY A USER #"
+                 "\nTHESE ARE ALL OF THE FILES THAT CURRENTLY EXIST:"
+                 "\n")
+finally:
+    holder.close()
+
 menu = 'START'
 read = 0
 reading = 0
-# Text_Files_List = []  # I want to a list that will Keep track of the files created,
-                        # but I will need to figure out how to access the contents of the list after the program has ended
 while menu != "END":
+    sleep(1)
     print(""
           "_" * 50)
     menu1 = input("\n*TYPE THE NUMBER OF YOUR DESIRED CHOICE*"
@@ -99,11 +109,19 @@ while menu != "END":
         quit()
 
     while menu1 != "ENDING":
+
+        first_line = True
+        holder = open("File_Holder.txt", "r")
+        print("\n" + boldening(holder.read()[55:]))
+        holder.close()
+
+        input(boldening("PRESS ENTER"))
+
         print(f"\n{Useful_Tools.Color.bold}{Useful_Tools.Color.red}DO NOT include PERIODS in name of this file."
               f"\nAny PERIODS will be removed, meaning you do not have to worry about adding the extension."
               f"\nThe '.txt will be added automatically{Useful_Tools.Color.end}"
               "\nAny SPACES you add will be replaced with '_'")
-        sleep(4)
+        sleep(1)
 
         if menu1 == 1:
             reads = input("\n\nWhat would you like to name this file?"
@@ -147,6 +165,10 @@ while menu != "END":
                         print(f"Alright, the file '{read}' has been created")
                         break
 
+        holder = open("File_Holder.txt", "a")
+        holder.write(read + '\n')
+        holder.close()
+
         while menu1 != "END":
             reading.close()
             menu2 = input("\n*TYPE THE NUMBER OF YOUR DESIRED CHOICE*"
@@ -170,6 +192,7 @@ while menu != "END":
                                   "\n>>>")
 
             if menu2 == 4:
+                menu1 = "ENDING"
                 break
 
             if menu2 == 1:
